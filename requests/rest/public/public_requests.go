@@ -1,5 +1,7 @@
 package public
 
+import okex "github.com/zok2/go-okx-v5"
+
 type (
 	GetInstruments struct {
 		Uly      string              `json:"uly,omitempty"`
