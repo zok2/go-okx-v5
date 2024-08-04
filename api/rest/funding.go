@@ -11,7 +11,7 @@ import (
 
 // Funding
 //
-// https://www.okex.com/docs-v5/en/#rest-api-funding
+// https://www.okx.com/docs-v5/zh/#funding-account-rest-api
 type Funding struct {
 	client *ClientRest
 }
@@ -22,9 +22,9 @@ func NewFunding(c *ClientRest) *Funding {
 }
 
 // GetCurrencies
-// Retrieve a list of all currencies. Not all currencies can be traded. Currencies that have not been defined in ISO 4217 may use a custom symbol.
+// 获取当前用户KYC实体支持的币种列表。
 //
-// https://www.okex.com/docs-v5/en/#rest-api-funding-get-currencies
+// https://www.okx.com/docs-v5/zh/#funding-account-rest-api-get-currencies
 func (c *Funding) GetCurrencies() (response responses.GetCurrencies, err error) {
 	p := "/api/v5/asset/currencies"
 
@@ -41,8 +41,8 @@ func (c *Funding) GetCurrencies() (response responses.GetCurrencies, err error) 
 }
 
 // GetBalance
-// Retrieve the balances of all the assets, and the amount that is available or on hold.
-//
+// 获取资金账户余额
+// 获取资金账户所有资产列表，查询各币种的余额、冻结和可用等信息。
 // https://www.okex.com/docs-v5/en/#rest-api-funding-get-balance
 func (c *Funding) GetBalance(req requests.GetBalance) (response responses.GetBalance, err error) {
 	p := "/api/v5/asset/balances"
