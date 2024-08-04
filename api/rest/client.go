@@ -21,6 +21,7 @@ type ClientRest struct {
 	SubAccount  *SubAccount
 	Trade       *Trade
 	Funding     *Funding
+	Financial   *Financial
 	Market      *Market
 	PublicData  *PublicData
 	TradeData   *TradeData
@@ -46,6 +47,7 @@ func NewClient(apiKey, secretKey, passphrase string, baseURL okex.BaseURL, desti
 	c.SubAccount = NewSubAccount(c)
 	c.Trade = NewTrade(c)
 	c.Funding = NewFunding(c)
+	c.Financial = NewFinancial(c)
 	c.Market = NewMarket(c)
 	c.PublicData = NewPublicData(c)
 	c.TradeData = NewTradeData(c)

@@ -15,6 +15,11 @@ type Financial struct {
 	client *ClientRest
 }
 
+// NewFinancial returns a pointer to a fresh Financial
+func NewFinancial(c *ClientRest) *Financial {
+	return &Financial{c}
+}
+
 func (c Financial) GetSavingsBalance(req requests.GetSavingBalance) (response responses.GetSavingBalance, err error) {
 	p := "/api/v5/finance/savings/lending-rate-history"
 	m := okex.S2M(req)
