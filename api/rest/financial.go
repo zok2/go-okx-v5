@@ -20,7 +20,7 @@ func NewFinancial(c *ClientRest) *Financial {
 	return &Financial{c}
 }
 
-func (c Financial) GetSavingsBalance(req requests.GetSavingBalance) (response responses.GetSavingBalance, err error) {
+func (c Financial) GetSavingBalance(req requests.GetSavingBalance) (response responses.GetSavingBalance, err error) {
 	p := "/api/v5/finance/savings/lending-rate-history"
 	m := okex.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
