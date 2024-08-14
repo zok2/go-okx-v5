@@ -12,22 +12,22 @@ type (
 	}
 	SavingsPurchaseRedempt struct {
 		responses.Basic
-		SavingsPurchaseRedempt []*models.SavingsPurchaseRedempt
+		SavingsPurchaseRedempt []*models.SavingsPurchaseRedempt `json:"data"`
 	}
 	SetLendingRate struct {
 		responses.Basic
-		SetLendingRate []*models.SetLendingRate
+		SetLendingRate []*models.SetLendingRate `json:"data"`
 	}
 	GetLendingHistory struct {
 		responses.Basic
-		LendingHistory []*models.LendingHistory
+		LendingHistory []*models.LendingHistory `json:"data"`
 	}
 	GetLendingRateSummary struct {
 		responses.Basic
-		LendingRateSummary []*models.LendingRateSummary
+		LendingRateSummary []*models.LendingRateSummary `json:"data"`
 	}
 	GetLendingRateHistory struct {
 		responses.Basic
-		LendingRateHistory []*models.LendingRateHistory
+		LendingRateHistory []*models.LendingRateHistory `json:"data"`
 	}
 )

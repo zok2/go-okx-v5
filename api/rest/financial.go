@@ -21,7 +21,7 @@ func NewFinancial(c *ClientRest) *Financial {
 }
 
 func (c Financial) GetSavingBalance(req requests.GetSavingBalance) (response responses.GetSavingBalance, err error) {
-	p := "/api/v5/finance/savings/lending-rate-history"
+	p := "/api/v5/finance/savings/balance"
 	m := okex.S2M(req)
 	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
@@ -77,7 +77,7 @@ func (c Financial) GetLendingRateSummary(req requests.GetLendingRateSummary) (re
 func (c Financial) GetLendingRateHistory(req requests.GetLendingRateHistory) (response responses.GetLendingRateHistory, err error) {
 	p := "/api/v5/finance/savings/lending-rate-history"
 	m := okex.S2M(req)
-	res, err := c.client.Do(http.MethodPost, p, true, m)
+	res, err := c.client.Do(http.MethodGet, p, true, m)
 	if err != nil {
 		return
 	}

@@ -25,8 +25,8 @@ type (
 	}
 	GetLendingRateHistory struct {
 		Ccy    string `json:"ccy,omitempty"` // Currency type, e.g., BTC. Optional.
-		After  int64  `json:"after,omitempty,string"`
-		Before int64  `json:"before,omitempty,string"`
-		Limit  int64  `json:"limit,omitempty,string"`
+		After  string `json:"after,omitempty,string"`
+		Before string `json:"before,omitempty,string"`
+		Limit  string `json:"limit,omitempty,string"`
 	}
 )
