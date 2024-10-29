@@ -301,6 +301,20 @@ const (
 
 func (t *JSONTime) String() string { return (time.Time)(*t).String() }
 
+func (t JSONTime) MarshalJSON() ([]byte, error) {
+	// 检查是否是零值时间
+	if time.Time(t).IsZero() {
+		// 返回空字符串或其他适合的默认值
+		return json.Marshal("")
+	}
+
+	// 将 time.Time 转换为 Unix 毫秒时间戳
+	timestamp := time.Time(t).UnixMilli()
+
+	// 将时间戳转换为 JSON 字符串
+	return json.Marshal(timestamp)
+}
+
 func (t *JSONTime) UnmarshalJSON(s []byte) (err error) {
 	r := strings.Replace(string(s), `"`, ``, -1)
 	if r == "" {

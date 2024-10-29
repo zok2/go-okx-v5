@@ -43,3 +43,5 @@ type (
 		IndexComponents *market.IndexComponent `json:"data,omitempty"`
 	}
 )
+
+

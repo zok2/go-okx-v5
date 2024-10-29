@@ -2,9 +2,11 @@ package rest
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/zok2/go-okx-v5"
 	requests "github.com/zok2/go-okx-v5/requests/rest/market"
 	responses "github.com/zok2/go-okx-v5/responses/market"
+	"io"
 	"net/http"
 )
 
@@ -117,8 +119,14 @@ func (c *Market) GetCandlesticksHistory(req requests.GetCandlesticks) (response 
 		return
 	}
 	defer res.Body.Close()
-	d := json.NewDecoder(res.Body)
-	err = d.Decode(&response)
+
+	// 读取并打印响应体
+	body, _ := io.ReadAll(res.Body)
+
+	// 尝试解析数据
+	if err = json.Unmarshal(body, &response); err != nil {
+		return response, fmt.Errorf("failed to parse response: %w", err)
+	}
 	return
 }
 
@@ -136,6 +144,7 @@ func (c *Market) GetIndexCandlesticks(req requests.GetCandlesticks) (response re
 	defer res.Body.Close()
 	d := json.NewDecoder(res.Body)
 	err = d.Decode(&response)
+
 	return
 }
 

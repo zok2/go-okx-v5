@@ -6,27 +6,36 @@ import (
 
 type (
 	Instrument struct {
-		InstID    string               `json:"instId"`
-		Uly       string               `json:"uly,omitempty"`
-		BaseCcy   string               `json:"baseCcy,omitempty"`
-		QuoteCcy  string               `json:"quoteCcy,omitempty"`
-		SettleCcy string               `json:"settleCcy,omitempty"`
-		CtValCcy  string               `json:"ctValCcy,omitempty"`
-		CtVal     okex.JSONFloat64     `json:"ctVal,omitempty"`
-		CtMult    okex.JSONFloat64     `json:"ctMult,omitempty"`
-		Stk       okex.JSONFloat64     `json:"stk,omitempty"`
-		TickSz    okex.JSONFloat64     `json:"tickSz,omitempty"`
-		LotSz     okex.JSONFloat64     `json:"lotSz,omitempty"`
-		MinSz     okex.JSONFloat64     `json:"minSz,omitempty"`
-		Lever     okex.JSONFloat64     `json:"lever"`
-		InstType  okex.InstrumentType  `json:"instType"`
-		Category  okex.FeeCategory     `json:"category,string"`
-		OptType   okex.OptionType      `json:"optType,omitempty"`
-		ListTime  okex.JSONTime        `json:"listTime"`
-		ExpTime   okex.JSONTime        `json:"expTime,omitempty"`
-		CtType    okex.ContractType    `json:"ctType,omitempty"`
-		Alias     okex.AliasType       `json:"alias,omitempty"`
-		State     okex.InstrumentState `json:"state"`
+		InstID       string               `json:"instId"`                 // 产品ID
+		InstType     okex.InstrumentType  `json:"instType"`               // 产品类型
+		Uly          string               `json:"uly,omitempty"`          // 标的指数
+		InstFamily   string               `json:"instFamily,omitempty"`   // 交易品种
+		BaseCcy      string               `json:"baseCcy,omitempty"`      // 交易货币币种
+		QuoteCcy     string               `json:"quoteCcy,omitempty"`     // 计价货币币种
+		SettleCcy    string               `json:"settleCcy,omitempty"`    // 盈亏结算和保证金币种
+		CtValCcy     string               `json:"ctValCcy,omitempty"`     // 合约面值计价币种
+		CtVal        okex.JSONFloat64     `json:"ctVal,omitempty"`        // 合约面值
+		CtMult       okex.JSONFloat64     `json:"ctMult,omitempty"`       // 合约乘数
+		Stk          okex.JSONFloat64     `json:"stk,omitempty"`          // 行权价格
+		TickSz       okex.JSONFloat64     `json:"tickSz,omitempty"`       // 下单价格精度
+		LotSz        okex.JSONFloat64     `json:"lotSz,omitempty"`        // 下单数量精度
+		MinSz        okex.JSONFloat64     `json:"minSz,omitempty"`        // 最小下单数量
+		Lever        okex.JSONFloat64     `json:"lever"`                  // 最大杠杆倍数
+		OptType      okex.OptionType      `json:"optType,omitempty"`      // 期权类型
+		ListTime     okex.JSONTime        `json:"listTime"`               // 上线时间
+		ExpTime      okex.JSONTime        `json:"expTime,omitempty"`      // 产品下线时间
+		CtType       okex.ContractType    `json:"ctType,omitempty"`       // 合约类型
+		Alias        okex.AliasType       `json:"alias,omitempty"`        // 合约日期别名
+		State        okex.InstrumentState `json:"state"`                  // 产品状态
+		RuleType     string               `json:"ruleType,omitempty"`     // 交易规则类型
+		MaxLmtSz     okex.JSONFloat64     `json:"maxLmtSz,omitempty"`     // 限价单的单笔最大委托数量
+		MaxMktSz     okex.JSONFloat64     `json:"maxMktSz,omitempty"`     // 市价单的单笔最大委托数量
+		MaxLmtAmt    okex.JSONFloat64     `json:"maxLmtAmt,omitempty"`    // 限价单的单笔最大美元价值
+		MaxMktAmt    okex.JSONFloat64     `json:"maxMktAmt,omitempty"`    // 市价单的单笔最大美元价值
+		MaxTwapSz    okex.JSONFloat64     `json:"maxTwapSz,omitempty"`    // 时间加权单的单笔最大委托数量
+		MaxIcebergSz okex.JSONFloat64     `json:"maxIcebergSz,omitempty"` // 冰山委托的单笔最大委托数量
+		MaxTriggerSz okex.JSONFloat64     `json:"maxTriggerSz,omitempty"` // 计划委托的单笔最大委托数量
+		MaxStopSz    okex.JSONFloat64     `json:"maxStopSz,omitempty"`    // 止盈止损市价委托的单笔最大委托数量
 	}
 	DeliveryExerciseHistory struct {
 		Details []*DeliveryExerciseHistoryDetails `json:"details"`
