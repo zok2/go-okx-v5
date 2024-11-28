@@ -45,7 +45,7 @@ type (
 	OrderBookWs struct {
 		Asks     []*OrderBookEntity `json:"asks"`
 		Bids     []*OrderBookEntity `json:"bids"`
-		Checksum int                `json:"checksum"`
+		Checksum int                `json:"checksum,omitempty"`
 		TS       okex.JSONTime      `json:"ts"`
 	}
 	OrderBookEntity struct {
@@ -55,15 +55,15 @@ type (
 		OrderNumbers    int
 	}
 	Candle struct {
-		O      float64 `json:"o"`
-		H      float64 `json:"h"`
-		L      float64 `json:"l"`
-		C      float64 `json:"c"`
-		Vol    float64 `json:"vol"`
-		VolCcy float64 `json:"volCcy"`
+		O           float64 `json:"o"`
+		H           float64 `json:"h"`
+		L           float64 `json:"l"`
+		C           float64 `json:"c"`
+		Vol         float64 `json:"vol"`
+		VolCcy      float64 `json:"volCcy"`
 		VolCcyQuote float64 `json:"volCcyQuote"`
-		Confirm int64 `json:"confirm"`
-		TS     okex.JSONTime
+		Confirm     int64   `json:"confirm"`
+		TS          okex.JSONTime
 	}
 	IndexCandle struct {
 		O  float64
@@ -136,8 +136,8 @@ func (o *OrderBookEntity) UnmarshalJSON(buf []byte) error {
 
 func (c *Candle) UnmarshalJSON(buf []byte) error {
 	var (
-		o, h, l, cl, vol, volCcy,volCcyQuote,confirm, ts  string
-		err                          error
+		o, h, l, cl, vol, volCcy, volCcyQuote, confirm, ts string
+		err                                                error
 	)
 	tmp := []interface{}{&ts, &o, &h, &l, &cl, &vol, &volCcy, &volCcyQuote, &confirm}
 	wantLen := len(tmp)

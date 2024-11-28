@@ -47,7 +47,7 @@ type (
 		Arg    *events.Argument      `json:"arg"`
 		InstID string                `json:"instId"`
 		Books  []*market.OrderBookWs `json:"data"`
-		Action string                `json:"action"`
+		Action string                `json:"action,omitempty"`
 	}
 	OPTIONSummary struct {
 		Arg     *events.Argument               `json:"arg"`

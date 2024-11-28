@@ -551,6 +551,19 @@ func (c *Public) Process(data []byte, e *events.Basic) bool {
 				}
 				return true
 			}
+			if strings.Contains(chName, "bbo-tbt") {
+				e := public.OrderBook{}
+				if err := json.Unmarshal(data, &e); err != nil {
+					return false
+				}
+				if c.obCh != nil {
+					c.obCh <- &e
+				}
+				if c.StructuredEventChan != nil {
+					c.StructuredEventChan <- e
+				}
+				return true
+			}
 		}
 	}
 	return false
